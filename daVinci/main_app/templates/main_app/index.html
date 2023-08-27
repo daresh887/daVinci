@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>daVinci</title>
+  <link rel="stylesheet" href="{% static 'main_app/style/style.css' %}">
+</head>
+<body>
+  <h1>Academia daVinci</h1>
+
+  <br>
+
+  {% for course in courses %}
+    <h1>{{ course.name }}</h1>
+    <h2>{{ course.description }} </h2>
+    <br>
+  {% endfor %}
+
+</body>
+</html>
