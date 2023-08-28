@@ -11,4 +11,10 @@ def index(request):
     })
 
 def page(request, page_slug):
-    return HttpResponse(page_slug)
+    try:
+        course = Course.objects.get(slug=page_slug)
+        return render(request, "main_app/course.html", {
+            "course": course
+        })
+    except Exception as exception:
+        return HttpResponse("Aceasta pagina nu exista!")
