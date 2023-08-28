@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>daVinci</title>
+  <title>Create a new course</title>
   <link rel="stylesheet" href="{% static 'main_app/style/style.css' %}">
 </head>
 <body>
@@ -13,11 +13,13 @@
 
   <br>
 
-  {% for course in courses %}
-    <h1><a href="{{ course.slug }}">{{ course.name }}</a></h1>
-    <br>
-  {% endfor %}
+  <form action="/create_course/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <ul>
+      {{ course_form.as_ul }}
+    </ul>
 
-  <button onclick="location.href='/create_course/'">Adauga un nou curs!</button>
+    <button type="submit">Create Course</button>
+  </form>
 </body>
 </html>
