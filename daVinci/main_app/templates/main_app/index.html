@@ -13,11 +13,29 @@
 
   <br>
 
+  {% if logged_in == "True" %}
+    <h2>Welcome, {{ user }}!</h2>
+    <br>
+    <br>
+  {% endif %}
+
   {% for course in courses %}
     <h1><a href="{{ course.slug }}">{{ course.name }}</a></h1>
     <br>
   {% endfor %}
 
   <button onclick="location.href='/create_course/'">Adauga un nou curs!</button>
+  {% if logged_in == "True" %}
+    <form action="/logout/", method="POST">
+      {% csrf_token %}
+      <button type="submit">Iesi din cont</button>
+    </form>
+  {% endif %}
+
+  <br>
+  <button onclick="location.href='/login/'">Intra in cont</button>
+  <br>
+  <button onclick="location.href='/register/'">Inregistreaza-te</button>
+
 </body>
 </html>
